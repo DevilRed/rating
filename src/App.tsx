@@ -1,7 +1,10 @@
+import { StarRating } from "./components/StarRating";
+
 function App() {
   return (
     <>
-      <h1>lL</h1>
+      <h1>Star Rating</h1>
+      <StarRating totalStars={3} />
     </>
   );
 }
