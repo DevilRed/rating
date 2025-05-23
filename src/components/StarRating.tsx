@@ -92,6 +92,7 @@ export const StarRating = ({ totalStars = 5 }: StarRatingProps) => {
         >
           <span
             className={`star ${isFull ? "full" : isHalf ? "half" : "empty"}`}
+            data-testid={`star-${index}`}
           >
             {/* the star character, it is transparent to give the effect */}★
           </span>
