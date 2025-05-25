@@ -62,14 +62,8 @@ describe("StarRating", () => {
         offsetX: 80,
         target: { offsetWidth: 100 },
       },
-    } as MouseEvent;
+    } as unknown as MouseEvent;
 
-    const mockEventLeft = {
-      nativeEvent: {
-        offsetX: 20,
-        target: { offsetWidth: 100 },
-      },
-    } as MouseEvent;
 
     // Test by calling the component and inspecting state changes
     render(<StarRating totalStars={5} />);
