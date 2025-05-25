@@ -35,18 +35,19 @@ export const StarRating = ({ totalStars = 5 }: StarRatingProps) => {
     Mouse at 70px: 70 < 50 → isHalf = false → returns 3
 
     */
-    console.log(index);
     return isHalf ? index - 0.5 : index;
   };
 
   // handle hover event, When a user moves their mouse over a star
   const handleMouseMove = (event: MouseEvent, index: number) => {
-    setRating(getStarHoverValue(event, index));
+    const hoverValue = getStarHoverValue(event, index);
+    setHover(hoverValue);
   };
 
   // handle click event
   const handleStarClick = (event: MouseEvent, index: number) => {
-    setRating(getStarHoverValue(event, index));
+    const ratingValue = getStarHoverValue(event, index);
+    setRating(ratingValue);
   };
 
   // reset hover when mouse leaves
@@ -59,7 +60,7 @@ export const StarRating = ({ totalStars = 5 }: StarRatingProps) => {
     const stars = [];
     for (let i = 1; i <= totalStars; i++) {
       // index = each star position
-      const index = i + 1;
+      const index = i;
       // Is the current hover value greater than or equal to this star's position
       // Is the selected rating greater than or equal to this star's position
       /**
@@ -82,6 +83,14 @@ export const StarRating = ({ totalStars = 5 }: StarRatingProps) => {
             Star 4: 2.5 === 4 - 0.5 = false → not half
        */
       const isHalf = hover === index - 0.5 || rating === index - 0.5;
+      // Debug log for each star's state
+      /* console.log(`Star ${index}:`, {
+        hover,
+        rating,
+        isFull,
+        isHalf,
+        finalClass: isFull ? "full" : isHalf ? "half" : "empty",
+      }); */
       stars.push(
         // div to hold the * star and handle events, this has the background color
         <div
